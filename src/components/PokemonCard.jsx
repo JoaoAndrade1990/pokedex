@@ -1,14 +1,26 @@
+import React from "react";
+import PropTypes from "prop-types"
+import styles from "./PokemonCard.module.css";
 
-function PokemonCard() {
-    return (
+const PokemonCard = ({ pokemon }) => {
+
+  return (
+    <div className={styles.card}>
       <figure>
-        <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-          alt="bulbasaur"
-        />
-        <figcaption>bulbasaur</figcaption>
+        {pokemon.imgSrc ? (
+          <img className={styles.image} src={pokemon.imgSrc} alt="" />
+        ) : "???"}
+        <figcaption>{pokemon.name}</figcaption>
       </figure>
-    );
-  }
-  
-  export default PokemonCard;
+    </div>
+  );
+};
+
+PokemonCard.propTypes = {
+  pokemon: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string,
+  }).isRequired,
+};
+
+export default PokemonCard;
