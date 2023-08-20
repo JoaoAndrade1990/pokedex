@@ -1,11 +1,19 @@
-const NavBar = ({next, previous}) => {
+import PropTypes from 'prop-types';
 
-    return(
+const NavBar = ({ pokemonList }) => {
+    return (
         <>
-        <button onClick={next}>Next</button>
-        <button onClick={previous}>Previous</button>
+            {pokemonList.map((pokemon, index) => (
+                <button key={index}>
+                    {pokemon.name}
+                </button>
+            ))}
         </>
     );
 }
+
+NavBar.propTypes = {
+    pokemonList: PropTypes.array.isRequired,
+};
 
 export default NavBar;
