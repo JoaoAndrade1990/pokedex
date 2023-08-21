@@ -5,12 +5,9 @@ import { useState } from "react";
 function App() {
     const [pokemonIndex, setPokemonIndex] = useState(0);
 
-    const next = () => {
-      setPokemonIndex(pokemonIndex + 1);
-    }
-
-    const previous = () => {
-      setPokemonIndex(pokemonIndex - 1);
+    const updatePokemon = (pokemon) => {
+        const index = pokemonList.findIndex((element) => element.name == pokemon);
+        setPokemonIndex(index);
     }
     
     console.log(pokemonIndex)
@@ -53,7 +50,7 @@ function App() {
   return (
     <div style={container}>
       <h2 style={{color: "blue", fontWeight: 800}}>Pokedex</h2>
-      <NavBar pokemonList={pokemonList}/>
+      <NavBar pokemonList={pokemonList} updatePokemon={updatePokemon}/>
       <PokemonCard pokemon={selectedPokemon}/>
       
     </div>

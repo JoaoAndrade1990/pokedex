@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-const NavBar = ({ pokemonList }) => {
+const NavBar = ({ pokemonList, updatePokemon}) => {
     return (
         <>
             {pokemonList.map((pokemon, index) => (
-                <button key={index}>
+                <button key={index} onClick={() => updatePokemon(pokemon.name)}>
                     {pokemon.name}
                 </button>
             ))}
